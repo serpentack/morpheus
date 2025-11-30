@@ -37,5 +37,5 @@ Morpheus supports Windows 8 builds 7779 through 8123, through your mileage may v
 Kudos to the following for their tools and help:
 * gus33000 and casm for making Redlock, the tool used to drop in the Redpill payload
 * The folks at MAS for developing [TSForge](https://github.com/massgravel/TSForge)
-** Special thanks to @WitherOrNot for assisting in debugging an astoundingly stupid SPP bug that prevented the other three Redpill licensing tiers from activating
+	* Special thanks to @WitherOrNot for assisting in debugging an astoundingly stupid SPP bug that prevented the other three Redpill licensing tiers from activating
 * NirSoft for their AdvancedRun tool (used to elevate Redlock to the `TrustedInstaller` account)
