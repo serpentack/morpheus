@@ -1,7 +1,5 @@
 @ECHO OFF
 
-@FOR /f "tokens=2 delims=\" %%i in ( 'whoami' ) do (set CURRENT_USER=%%i)
-
 if %PHASE1_READY% NEQ 1 (
 	title Wrong Script File Invoked
 	color 4F
@@ -30,7 +28,8 @@ rem Windows RP Protected Segment 04 (Unknown)
 set RP04_ACTIVATION_ID=791126b6-f5c5-467a-a2a2-31e35bfdfd53
 
 rem Windows RP Protected Segment 05 (Unknown)
-set RP05_ACTIVATION_ID=f2e0cd04-d62c-4073-9990-6b8625bacae3
+rem RP05 is apparently unused and doesn't activate.
+rem set RP05_ACTIVATION_ID=f2e0cd04-d62c-4073-9990-6b8625bacae3
 
 set WMIC_ACTIVATION_ID_TO_CHECK=TempVar
 
@@ -52,15 +51,15 @@ echo.
 echo Uninstalling pre-existing Redpill keys (if applicable)...
 echo.
 echo Uninstalling RP01(-PDC)...
-cscript %SLMGR_PATH% /upk cee174ef-dff4-4bbe-bc8f-54efe4881e22 > NUL
+cscript %SLMGR_PATH% /upk %RP01_ACTIVATION_ID% > NUL
 echo Uninstalling RP02...
-cscript %SLMGR_PATH% /upk 7f7bf1f2-c863-4d30-b15c-ada9ca945f2c > NUL
+cscript %SLMGR_PATH% /upk %RP02_ACTIVATION_ID% > NUL
 echo Uninstalling RP03...
-cscript %SLMGR_PATH% /upk 4eda97c7-bcdd-4b66-99a0-fbe1ac1a6db7 > NUL
+cscript %SLMGR_PATH% /upk %RP03_ACTIVATION_ID% > NUL
 echo Uninstalling RP04...
-cscript %SLMGR_PATH% /upk 791126b6-f5c5-467a-a2a2-31e35bfdfd53 > NUL
-echo Uninstalling RP05...
-cscript %SLMGR_PATH% /upk f2e0cd04-d62c-4073-9990-6b8625bacae3 > NUL
+cscript %SLMGR_PATH% /upk %RP04_ACTIVATION_ID% > NUL
+rem echo Uninstalling RP05...
+rem cscript %SLMGR_PATH% /upk %RP05_ACTIVATION_ID% > NUL
 
 rem Attempt RP activation.
 
@@ -140,7 +139,8 @@ if %RP_LICENSE_TIER% == 1 (
 	set WMIC_ACTIVATION_ID_TO_CHECK=%RP04_ACTIVATION_ID%
 ) 
 
-rem RP05 is broken for some reason. Keeping this commented out.
+rem I'm told that RP05 was never used during Win8 development.
+rem This is probably going to remain indefinitely commented out.
 rem ) else if %RP_LICENSE_TIER% == 5 (
 rem 	rem Generate RP05 key in TSForge
 rem 	%TSFORGE_PATH% /ver %TSFORGE_OS_TYPE% /prod /igpk %RP05_ACTIVATION_ID%
@@ -168,6 +168,8 @@ if %RP_DATA_LOOKS_RIGHT% == 1 (
 	echo Redpill key activation failed.
 )
 
-rem Reload DWM atlas for RP.
-call "%~dp0\KillDWM.cmd"
-rem start "" "%WINDIR%\explorer.exe"
+if %RP_LICENSE_TIER% == 1 (
+	rem Reload DWM atlas for RP if we're on RP tier 1.
+	rem This initalizes the alternate DWM atlas and Aero AMAP resources.
+	call "%~dp0\KillDWM.cmd"
+)

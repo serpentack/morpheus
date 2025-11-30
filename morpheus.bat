@@ -7,6 +7,7 @@ set SPP_SERVICE_STATE=0
 rem Redpill licensing variables (used by install_key.cmd)
 set RP_DATA_LOOKS_RIGHT=0
 set RP_LICENSE_TIER=0
+set RP_SHSXS_SKIP_REQUIRED=0
 
 rem "Screwed build" variables
 set BUILD_TOO_HIGH=0

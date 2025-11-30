@@ -1,7 +1,5 @@
 @ECHO OFF && CLS
 
-@FOR /f "tokens=2 delims=\" %%i in ( 'whoami' ) do (set CURRENT_USER=%%i)
-
 if %PHASE2_READY% NEQ 1 (
 	title Wrong Script File Invoked
 	color 4F
@@ -25,10 +23,16 @@ echo.
 echo Initiating Phase 2...
 echo.
 
-rem Installs patched shsxs and ImmersiveBrowser
-echo.
-echo Installing Redpill components...
-"%~dp0\..\Bin\AdvRun\AdvancedRun.exe" /Clear /ExeFilename "%~dp0\..\Bin\Redlock\redlock.exe" /CommandLine "audit nopol" /RunAs 8 /Run /WaitProcess 1 & if not ERRORLEVEL == 0 ( exit /b 1 )
+if %RP_SHSXS_SKIP_REQUIRED% == 1 (
+	rem Skip this entire section if we're on 8102 and just head straight for the finalize section.
+	echo Current OS build is WINMAIN_WIN8M3 8102. Skipping phase 2.
+	goto :Finalize
+) else (
+	rem Installs patched shsxs and ImmersiveBrowser
+	echo.
+	echo Installing Redpill components...
+	"%~dp0\..\Bin\AdvRun\AdvancedRun.exe" /Clear /ExeFilename "%~dp0\..\Bin\Redlock\redlock.exe" /CommandLine "audit nopol" /RunAs 8 /Run /WaitProcess 1 & if not ERRORLEVEL == 0 ( exit /b 1 )
+)
 
 echo.
 echo Enabling extra non-Redlock bits...
@@ -75,7 +79,7 @@ if %CURRENT_BUILD% GEQ %CHARMS_MODE_MIN_BUILD% if %CURRENT_BUILD% LEQ %CHARMS_MO
 
 :EnableLeftCharms
 echo Enabling Charms Menu...
-rem Apply right-hand charms bar mode globally; any new accounts created past this point will also have the alternate bar.
+rem Apply left-hand charms bar mode globally; any new accounts created past this point will also have the alternate bar.
 reg load "%CHARMS_MODE_GLOBAL_ACCOUNT_HIVE_PATH%" "%SYSTEMDRIVE%\Users\Default\NTUSER.DAT%" > NUL
 reg add "%CHARMS_MODE_GLOBAL_ACCOUNT_HIVE_PATH%\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell" /v "CharmBarMode" /t REG_DWORD /d 0 /f > NUL
 reg unload "%CHARMS_MODE_GLOBAL_ACCOUNT_HIVE_PATH%" > NUL

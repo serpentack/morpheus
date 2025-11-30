@@ -6,10 +6,17 @@ set EDITION_ID_VAR="EditionID"
 rem Our variables for no-no builds. We have a special edge case for 8020 winmain x86/amd64.
 set NO_NO_LAB_BUILD_MIN_FLOOR=8049
 set NO_NO_LAB_BUILD_EDGECASE_NUM=8020
+set NO_NO_LAB_WM_EEAP_FLOOR=8090
+set NO_NO_LAB_WM_EEAP_CEILING=8102
 set NO_NO_LAB=fbl_eeap
 set NO_NO_LAB_WM=winmain
+set NO_NO_LAB_WM_EEAP=winmain_win8m3_eeap
 set ARM_UNSUPPORTED_FLAVOR_FRE=armfre
 set ARM_UNSUPPORTED_FLAVOR_CHK=armchk
+
+rem Stored to skip dropping ShSxS payload on 8102
+set RP_SHSXS_SKIP_BUILDNUM=8102
+set RP_SHSXS_SKIP_LAB=winmain_win8m3
 
 rem rem The SKUs this'll work with. Either Prerelease or ServerDatacenter.
 rem set REQUIRED_SKU_CLIENT=Prerelease
@@ -93,7 +100,7 @@ if %CURRENT_BUILD% GEQ %REDPILL_MIN_SUPPORT_FLOOR% if %CURRENT_BUILD% LEQ %REDPI
 	set IS_RUNNING_OLD_BUILD=1
 )
 
-rem Check if we're running EEAP >= 8049 or WM 8020 x86/amd64.
+rem Check if we're running EEAP >= 8049 or WM 8020 x86/amd64. Also blacklist winmain_win8m3_eeap.
 if %CURRENT_BUILD% GEQ %NO_NO_LAB_BUILD_MIN_FLOOR% if %CURRENT_LAB_NAME% == %NO_NO_LAB% (
 	echo We're running a stripped-down EEAP build. Failing...
 	set SCREWED=1
@@ -102,8 +109,19 @@ if %CURRENT_BUILD% GEQ %NO_NO_LAB_BUILD_MIN_FLOOR% if %CURRENT_LAB_NAME% == %NO_
 	echo Special edge case detected - We're running 8020 winmain x86/amd64. Failing...
 	set SCREWED=1
 	goto :EOF
+) else if %CURRENT_BUILD% GEQ %NO_NO_LAB_WM_EEAP_FLOOR% if %CURRENT_BUILD% LEQ %NO_NO_LAB_WM_EEAP_CEILING% if %CURRENT_LAB_NAME% == %NO_NO_LAB_WM_EEAP% (
+	echo Special edge case detected - We're running a winmain_win8m3_eeap build. Failing...
+	set SCREWED=1
+	goto :EOF
 ) else if SCREWED == 0 (
 	goto :yay
+)
+
+rem This exists so we can skip the ShSxS payload if we're on 8102 WINMAIN_WIN8M3.
+if %CURRENT_BUILD% == %RP_SHSXS_SKIP_BUILDNUM% if %CURRENT_LAB_NAME% == %RP_SHSXS_SKIP_LAB% (
+	echo Win8 Developer Preview detected. Payload drop will be skipped.
+	set RP_SHSXS_SKIP_REQUIRED=1
+	goto :EOF
 )
 
 :yay
