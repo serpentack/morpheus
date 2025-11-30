@@ -145,7 +145,7 @@ echo         - Start Screen, apps and friends
 echo     - 2: RP02 (MoSh Platform and Dev Resources ^+ Windows FTE Protected Features)
 echo         - Windows Runtime platform, Win32 shell features
 echo     - 3: RP03 (Windows FTE Protected Features) - Various Win32 shell features
-echo         - Explorer ribbon, new Task Manager
+echo         - Explorer ribbon, new Task Manager, et al.
 echo     - 4: RP04
 echo         - Small subset of Metro features (Charms, LogonUI et al.)
 rem echo     - 5: RP05
