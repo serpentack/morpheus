@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".assets/logo_white.svg"/>
-    <img width=512 src=".assets/logo_black.svg" alt="Morpheus Logo"/>
+    <source media="(prefers-color-scheme: dark)" srcset=".assets/morpheus_wordmark_white.svg"/>
+    <img width=512 src=".assets/morpheus_wordmark.svg" alt="Morpheus Logo"/>
   </picture>
 </p>
 
