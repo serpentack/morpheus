@@ -141,7 +141,7 @@ echo.
 echo Please select a Redpill licensing tier (from 1 to 4; RP05 policies are currently broken):
 echo.
 echo     - 1: RP01 (Modern Personality) - Full Windows 8 shell
-echo         - Start Screen, apps and friends
+echo         - Start Screen, apps and friends; alternate Aero animation map, DWM atlas
 echo     - 2: RP02 (MoSh Platform and Dev Resources ^+ Windows FTE Protected Features)
 echo         - Windows Runtime platform, Win32 shell features
 echo     - 3: RP03 (Windows FTE Protected Features) - Various Win32 shell features
