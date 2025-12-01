@@ -3,6 +3,10 @@ set CURRENT_VERSION_KEY="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\Curren
 set BUILD_LAB_VAR="BuildLabEx"
 set EDITION_ID_VAR="EditionID"
 
+set CURRENT_BUILD=0000
+set CURRENT_ARCH=meow128fre
+set CURRENT_LAB_NAME=meowmain
+
 rem Our variables for no-no builds. We have a special edge case for 8020 winmain x86/amd64.
 set NO_NO_LAB_BUILD_MIN_FLOOR=8049
 set NO_NO_LAB_BUILD_EDGECASE_NUM=8020
@@ -105,15 +109,21 @@ if %CURRENT_BUILD% GEQ %NO_NO_LAB_BUILD_MIN_FLOOR% if %CURRENT_LAB_NAME% == %NO_
 	echo We're running a stripped-down EEAP build. Failing...
 	set SCREWED=1
 	goto :EOF
-) else if %CURRENT_BUILD% == %NO_NO_LAB_BUILD_EDGECASE_NUM% if %CURRENT_LAB_NAME% == %NO_NO_LAB_WM% (
+)
+
+if %CURRENT_BUILD% == %NO_NO_LAB_BUILD_EDGECASE_NUM% if %CURRENT_LAB_NAME% == %NO_NO_LAB_WM% (
 	echo Special edge case detected - We're running 8020 winmain x86/amd64. Failing...
 	set SCREWED=1
 	goto :EOF
-) else if %CURRENT_BUILD% GEQ %NO_NO_LAB_WM_EEAP_FLOOR% if %CURRENT_BUILD% LEQ %NO_NO_LAB_WM_EEAP_CEILING% if %CURRENT_LAB_NAME% == %NO_NO_LAB_WM_EEAP% (
+)
+
+if %CURRENT_BUILD% GEQ %NO_NO_LAB_WM_EEAP_FLOOR% if %CURRENT_BUILD% LEQ %NO_NO_LAB_WM_EEAP_CEILING% if %CURRENT_LAB_NAME% == %NO_NO_LAB_WM_EEAP% (
 	echo Special edge case detected - We're running a winmain_win8m3_eeap build. Failing...
 	set SCREWED=1
 	goto :EOF
-) else if SCREWED == 0 (
+)
+
+if SCREWED == 0 (
 	goto :yay
 )
 
